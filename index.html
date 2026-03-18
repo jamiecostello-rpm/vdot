@@ -108,7 +108,7 @@
       outline: none;
     }
     .input-field::placeholder {
-      color: rgba(180, 219, 220, 0.4);
+      color: rgba(180, 219, 220, 0.6);
     }
 
     .select-field {
@@ -214,7 +214,7 @@
     <h1 class="font-heading text-4xl md:text-5xl lg:text-6xl font-black tracking-tight gradient-text-hero leading-tight pb-2">
       Personal Best Predictor
     </h1>
-    <p class="mt-3 font-body text-sm md:text-base max-w-xl mx-auto leading-relaxed" style="color: #B4DBDC;">
+    <p class="mt-3 font-body text-sm md:text-base max-w-xl mx-auto leading-relaxed" style="color: #d4ecee;">
       Enter a recent race result to discover your VDOT fitness score and predicted race times across all distances.
     </p>
   </header>
@@ -231,7 +231,7 @@
 
       <!-- Distance Selector -->
       <div class="mb-5">
-        <label for="race-distance" class="block text-sm font-medium mb-2" style="color: #B4DBDC;">Race Distance</label>
+        <label for="race-distance" class="block text-sm font-medium mb-2" style="color: #e0f0f1;">Race Distance</label>
         <select id="race-distance" class="select-field w-full rounded-xl px-4 py-3 text-sm font-body">
           <option value="5000">5K</option>
           <option value="10000">10K</option>
@@ -242,19 +242,19 @@
 
       <!-- Time Inputs -->
       <div class="mb-6">
-        <label class="block text-sm font-medium mb-2" style="color: #B4DBDC;">Finish Time</label>
+        <label class="block text-sm font-medium mb-2" style="color: #e0f0f1;">Finish Time</label>
         <div class="grid grid-cols-3 gap-3">
           <div>
             <input type="number" id="hours" min="0" max="12" placeholder="0" class="input-field w-full rounded-xl px-4 py-3 text-center text-lg font-semibold font-body" />
-            <span class="block text-center text-xs mt-1.5" style="color: rgba(180,219,220,0.5);">Hours</span>
+            <span class="block text-center text-xs mt-1.5" style="color: rgba(210,235,237,0.7);">Hours</span>
           </div>
           <div>
             <input type="number" id="minutes" min="0" max="59" placeholder="00" class="input-field w-full rounded-xl px-4 py-3 text-center text-lg font-semibold font-body" />
-            <span class="block text-center text-xs mt-1.5" style="color: rgba(180,219,220,0.5);">Minutes</span>
+            <span class="block text-center text-xs mt-1.5" style="color: rgba(210,235,237,0.7);">Minutes</span>
           </div>
           <div>
             <input type="number" id="seconds" min="0" max="59" placeholder="00" class="input-field w-full rounded-xl px-4 py-3 text-center text-lg font-semibold font-body" />
-            <span class="block text-center text-xs mt-1.5" style="color: rgba(180,219,220,0.5);">Seconds</span>
+            <span class="block text-center text-xs mt-1.5" style="color: rgba(210,235,237,0.7);">Seconds</span>
           </div>
         </div>
       </div>
@@ -273,9 +273,9 @@
 
       <!-- VDOT Badge -->
       <div class="vdot-badge rounded-2xl p-6 md:p-8 text-center results-enter">
-        <p class="text-sm uppercase tracking-wider font-medium font-heading mb-1" style="color: #B4DBDC;">Your VDOT Score</p>
+        <p class="text-sm uppercase tracking-wider font-medium font-heading mb-1" style="color: #e0f0f1;">Your VDOT Score</p>
         <p id="vdot-score" class="text-6xl md:text-7xl font-black font-heading gradient-text leading-none py-2"></p>
-        <p class="text-sm mt-2 font-body" style="color: rgba(180,219,220,0.6);">Based on your race performance</p>
+        <p class="text-sm mt-2 font-body" style="color: rgba(210,235,237,0.75);">Based on your race performance</p>
       </div>
 
       <!-- Predicted Times Table -->
@@ -288,9 +288,9 @@
           <table class="w-full text-sm font-body">
             <thead>
               <tr style="background: rgba(0,139,149,0.08);">
-                <th class="text-left px-5 py-3 font-medium" style="color: #B4DBDC;">Distance</th>
-                <th class="text-right px-5 py-3 font-medium" style="color: #B4DBDC;">Predicted Time</th>
-                <th class="text-right px-5 py-3 font-medium" style="color: #B4DBDC;">Pace / km</th>
+                <th class="text-left px-5 py-3 font-medium" style="color: #e0f0f1;">Distance</th>
+                <th class="text-right px-5 py-3 font-medium" style="color: #e0f0f1;">Predicted Time</th>
+                <th class="text-right px-5 py-3 font-medium" style="color: #e0f0f1;">Pace / km</th>
               </tr>
             </thead>
             <tbody id="predictions-body">
@@ -308,7 +308,7 @@
           </div>
           <div>
             <h3 class="font-heading text-white font-bold text-base mb-2">You've Got Untapped Potential</h3>
-            <p class="font-body text-sm leading-relaxed" style="color: #B4DBDC;">
+            <p class="font-body text-sm leading-relaxed" style="color: #d4ecee;">
               Based on your current VDOT score, you have some serious untapped potential. Want to smash these predicted times? Book a physiological test and coaching consultation at our clinic to ensure you're training correctly and optimizing your race-day performance.
             </p>
           </div>
@@ -332,7 +332,7 @@
         style="max-height: 50px; width: auto; opacity: 0.7;"
       />
     </a>
-    <p class="text-xs mt-1 font-body" style="color: rgba(180,219,220,0.4);">High Performance Lab · Dublin · PB predictions powered by VDOT methodology (Jack Daniels &amp; Jimmy Gilbert)</p>
+    <p class="text-xs mt-1 font-body" style="color: rgba(210,235,237,0.55);">High Performance Lab · Dublin · PB predictions powered by VDOT methodology (Jack Daniels &amp; Jimmy Gilbert)</p>
   </footer>
 
   <script>
@@ -479,7 +479,7 @@
             ${isInput ? '<span class="ml-2 text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full font-semibold" style="background: rgba(0,139,149,0.15); color: #008B95;">Your Race</span>' : ''}
           </td>
           <td class="px-5 py-3.5 text-right font-mono font-semibold" style="color: ${isInput ? '#B4DBDC' : '#ffffff'};">${formatTime(predicted)}</td>
-          <td class="px-5 py-3.5 text-right font-mono" style="color: rgba(180,219,220,0.5);">${pace} /km</td>
+          <td class="px-5 py-3.5 text-right font-mono" style="color: rgba(210,235,237,0.7);">${pace} /km</td>
         `;
         predictionsBody.appendChild(tr);
       });
