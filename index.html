@@ -1,0 +1,492 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Personal Best (PB) Predictor — Neuromuscular & Sports Injury Clinic</title>
+  <meta name="description" content="Predict your personal best race times using the Jack Daniels VDOT method. Powered by the High Performance Lab at Neuromuscular & Sports Injury Clinic, Dublin." />
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Lato:wght@300;400;700;900&family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            heading: ['Lato', 'Helvetica', 'Arial', 'sans-serif'],
+            body: ['Montserrat', 'Helvetica', 'Arial', 'sans-serif'],
+          },
+          colors: {
+            brand: {
+              darkest:  '#06444A',
+              dark:     '#0A4B5E',
+              primary:  '#008B95',
+              accent:   '#65a87a',
+              light:    '#B4DBDC',
+              teal:     '#1f888e',
+              bright:   '#16b7cc',
+              mint:     '#29c4a9',
+            },
+          },
+        },
+      },
+    };
+  </script>
+  <style>
+    body {
+      font-family: 'Montserrat', Helvetica, Arial, sans-serif;
+      background: #06444A;
+      min-height: 100vh;
+    }
+
+    h1, h2, h3, h4, h5, h6 {
+      font-family: 'Lato', Helvetica, Arial, sans-serif;
+    }
+
+    .bg-hero {
+      background:
+        radial-gradient(ellipse 80% 50% at 50% 0%, rgba(0, 139, 149, 0.30) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 80% 50%, rgba(10, 75, 94, 0.25) 0%, transparent 50%),
+        radial-gradient(ellipse 50% 50% at 20% 80%, rgba(22, 183, 204, 0.08) 0%, transparent 50%);
+    }
+
+    .card-glass {
+      background: rgba(255, 255, 255, 0.06);
+      border: 1px solid rgba(180, 219, 220, 0.12);
+      backdrop-filter: blur(24px);
+    }
+
+    .gradient-text {
+      background: linear-gradient(135deg, #B4DBDC, #008B95);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .gradient-text-hero {
+      background: linear-gradient(135deg, #ffffff 0%, #B4DBDC 50%, #008B95 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+
+    .btn-primary {
+      background: linear-gradient(135deg, #008B95, #0A4B5E);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 4px 24px rgba(0, 139, 149, 0.3);
+    }
+    .btn-primary:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(0, 139, 149, 0.45);
+      background: linear-gradient(135deg, #1f888e, #008B95);
+    }
+    .btn-primary:active {
+      transform: translateY(0);
+    }
+
+    .btn-cta {
+      background: linear-gradient(135deg, #65a87a, #008B95);
+      transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+      box-shadow: 0 4px 24px rgba(101, 168, 122, 0.3);
+    }
+    .btn-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 8px 32px rgba(101, 168, 122, 0.45);
+    }
+
+    .input-field {
+      background: rgba(6, 68, 74, 0.8);
+      border: 1px solid rgba(180, 219, 220, 0.15);
+      transition: all 0.25s ease;
+      color: #f1f5f9;
+    }
+    .input-field:focus {
+      border-color: rgba(0, 139, 149, 0.6);
+      box-shadow: 0 0 0 3px rgba(0, 139, 149, 0.15);
+      background: rgba(10, 75, 94, 0.9);
+      outline: none;
+    }
+    .input-field::placeholder {
+      color: rgba(180, 219, 220, 0.4);
+    }
+
+    .select-field {
+      background-color: rgba(6, 68, 74, 0.8);
+      border: 1px solid rgba(180, 219, 220, 0.15);
+      transition: all 0.25s ease;
+      appearance: none;
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23B4DBDC' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+      background-repeat: no-repeat;
+      background-position: right 12px center;
+      padding-right: 40px;
+      color: #f1f5f9;
+    }
+    .select-field:focus {
+      border-color: rgba(0, 139, 149, 0.6);
+      box-shadow: 0 0 0 3px rgba(0, 139, 149, 0.15);
+      background-color: rgba(10, 75, 94, 0.9);
+      outline: none;
+    }
+    .select-field option {
+      background: #06444A;
+      color: #e2e8f0;
+    }
+
+    .results-enter {
+      animation: resultsSlideIn 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+    }
+    @keyframes resultsSlideIn {
+      from { opacity: 0; transform: translateY(24px) scale(0.97); }
+      to   { opacity: 1; transform: translateY(0) scale(1); }
+    }
+
+    .vdot-badge {
+      background: linear-gradient(135deg, rgba(0, 139, 149, 0.15), rgba(10, 75, 94, 0.15));
+      border: 1px solid rgba(0, 139, 149, 0.25);
+    }
+
+    .table-row {
+      transition: background 0.2s ease;
+    }
+    .table-row:hover {
+      background: rgba(255, 255, 255, 0.04);
+    }
+
+    .cta-card {
+      background: linear-gradient(135deg, rgba(101, 168, 122, 0.08), rgba(0, 139, 149, 0.06));
+      border: 1px solid rgba(101, 168, 122, 0.18);
+    }
+
+    .pulse-dot {
+      animation: pulse 2s infinite;
+    }
+    @keyframes pulse {
+      0%, 100% { opacity: 1; }
+      50% { opacity: 0.4; }
+    }
+
+    .error-shake {
+      animation: shake 0.4s ease;
+    }
+    @keyframes shake {
+      0%, 100% { transform: translateX(0); }
+      25% { transform: translateX(-6px); }
+      75% { transform: translateX(6px); }
+    }
+
+    .divider-glow {
+      height: 1px;
+      background: linear-gradient(90deg, transparent, rgba(0, 139, 149, 0.4), transparent);
+    }
+
+    .logo-img {
+      filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+      transition: transform 0.3s ease;
+    }
+    .logo-img:hover {
+      transform: scale(1.03);
+    }
+  </style>
+</head>
+<body class="bg-hero text-gray-200 antialiased">
+
+  <!-- Header / Brand Bar -->
+  <header class="pt-8 pb-2 text-center px-4">
+    <!-- Actual Logo -->
+    <a href="https://neuromuscular.ie/" target="_blank" class="inline-block mb-5">
+      <img
+        src="https://neuromuscular.ie/wp-content/uploads/2023/10/LOGONeuromuscular-PNG.png"
+        alt="Neuromuscular & Sports Injury Clinic"
+        class="logo-img mx-auto"
+        style="max-height: 90px; width: auto;"
+      />
+    </a>
+
+    <div class="divider-glow max-w-xs mx-auto mb-7"></div>
+
+    <!-- Sub-brand badge -->
+    <div class="inline-flex items-center gap-2 mb-4 px-4 py-1.5 rounded-full bg-brand-primary/10 border border-brand-primary/15 text-xs tracking-wide uppercase font-medium" style="color: #B4DBDC;">
+      <span class="w-2 h-2 rounded-full pulse-dot inline-block" style="background: #008B95;"></span>
+      High Performance Lab
+    </div>
+
+    <h1 class="font-heading text-4xl md:text-5xl lg:text-6xl font-black tracking-tight gradient-text-hero leading-tight pb-2">
+      Personal Best Predictor
+    </h1>
+    <p class="mt-3 font-body text-sm md:text-base max-w-xl mx-auto leading-relaxed" style="color: #B4DBDC;">
+      Enter a recent race result to discover your VDOT fitness score and predicted race times across all distances.
+    </p>
+  </header>
+
+  <!-- Main Content -->
+  <main class="max-w-2xl mx-auto px-4 pb-20">
+
+    <!-- Input Card -->
+    <section class="card-glass rounded-2xl p-6 md:p-8 mt-8" id="input-card">
+      <h2 class="font-heading text-lg font-bold text-white mb-6 flex items-center gap-2">
+        <svg class="w-5 h-5" style="color: #008B95;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
+        Enter Your Race Result
+      </h2>
+
+      <!-- Distance Selector -->
+      <div class="mb-5">
+        <label for="race-distance" class="block text-sm font-medium mb-2" style="color: #B4DBDC;">Race Distance</label>
+        <select id="race-distance" class="select-field w-full rounded-xl px-4 py-3 text-sm font-body">
+          <option value="5000">5K</option>
+          <option value="10000">10K</option>
+          <option value="21097.5">Half-Marathon</option>
+          <option value="42195">Marathon</option>
+        </select>
+      </div>
+
+      <!-- Time Inputs -->
+      <div class="mb-6">
+        <label class="block text-sm font-medium mb-2" style="color: #B4DBDC;">Finish Time</label>
+        <div class="grid grid-cols-3 gap-3">
+          <div>
+            <input type="number" id="hours" min="0" max="12" placeholder="0" class="input-field w-full rounded-xl px-4 py-3 text-center text-lg font-semibold font-body" />
+            <span class="block text-center text-xs mt-1.5" style="color: rgba(180,219,220,0.5);">Hours</span>
+          </div>
+          <div>
+            <input type="number" id="minutes" min="0" max="59" placeholder="00" class="input-field w-full rounded-xl px-4 py-3 text-center text-lg font-semibold font-body" />
+            <span class="block text-center text-xs mt-1.5" style="color: rgba(180,219,220,0.5);">Minutes</span>
+          </div>
+          <div>
+            <input type="number" id="seconds" min="0" max="59" placeholder="00" class="input-field w-full rounded-xl px-4 py-3 text-center text-lg font-semibold font-body" />
+            <span class="block text-center text-xs mt-1.5" style="color: rgba(180,219,220,0.5);">Seconds</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Error Message -->
+      <div id="error-message" class="hidden mb-4 px-4 py-3 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 text-sm font-body"></div>
+
+      <!-- Calculate Button -->
+      <button id="calculate-btn" class="btn-primary w-full rounded-xl px-6 py-3.5 text-white font-bold text-sm tracking-wide cursor-pointer font-heading">
+        Calculate My Potential
+      </button>
+    </section>
+
+    <!-- Results Section -->
+    <section id="results-section" class="hidden mt-6">
+
+      <!-- VDOT Badge -->
+      <div class="vdot-badge rounded-2xl p-6 md:p-8 text-center results-enter">
+        <p class="text-sm uppercase tracking-wider font-medium font-heading mb-1" style="color: #B4DBDC;">Your VDOT Score</p>
+        <p id="vdot-score" class="text-6xl md:text-7xl font-black font-heading gradient-text leading-none py-2"></p>
+        <p class="text-sm mt-2 font-body" style="color: rgba(180,219,220,0.6);">Based on your race performance</p>
+      </div>
+
+      <!-- Predicted Times Table -->
+      <div class="card-glass rounded-2xl p-6 md:p-8 mt-4 results-enter" style="animation-delay: 0.1s;">
+        <h2 class="font-heading text-lg font-bold text-white mb-5 flex items-center gap-2">
+          <svg class="w-5 h-5" style="color: #65a87a;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+          Predicted Race Times
+        </h2>
+        <div class="overflow-hidden rounded-xl border border-white/5">
+          <table class="w-full text-sm font-body">
+            <thead>
+              <tr style="background: rgba(0,139,149,0.08);">
+                <th class="text-left px-5 py-3 font-medium" style="color: #B4DBDC;">Distance</th>
+                <th class="text-right px-5 py-3 font-medium" style="color: #B4DBDC;">Predicted Time</th>
+                <th class="text-right px-5 py-3 font-medium" style="color: #B4DBDC;">Pace / km</th>
+              </tr>
+            </thead>
+            <tbody id="predictions-body">
+              <!-- Filled by JS -->
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- CTA Card -->
+      <div class="cta-card rounded-2xl p-6 md:p-8 mt-4 results-enter" style="animation-delay: 0.2s;">
+        <div class="flex items-start gap-4">
+          <div class="flex-shrink-0 w-10 h-10 rounded-xl flex items-center justify-center mt-0.5" style="background: rgba(101,168,122,0.15);">
+            <svg class="w-5 h-5" style="color: #65a87a;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+          </div>
+          <div>
+            <h3 class="font-heading text-white font-bold text-base mb-2">You've Got Untapped Potential</h3>
+            <p class="font-body text-sm leading-relaxed" style="color: #B4DBDC;">
+              Based on your current VDOT score, you have some serious untapped potential. Want to smash these predicted times? Book a physiological test and coaching consultation at our clinic to ensure you're training correctly and optimizing your race-day performance.
+            </p>
+          </div>
+        </div>
+        <a href="https://neuromuscular.ie/online-booking/" target="_blank" id="book-now-btn" class="btn-cta mt-5 inline-flex items-center gap-2 rounded-xl px-6 py-3 text-white font-bold text-sm tracking-wide cursor-pointer font-heading">
+          Book Now
+          <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 8l4 4m0 0l-4 4m4-4H3"/></svg>
+        </a>
+      </div>
+
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="text-center py-8 px-4" style="border-top: 1px solid rgba(0,139,149,0.15);">
+    <a href="https://neuromuscular.ie/" target="_blank" class="inline-block mb-3 hover:opacity-80 transition-opacity">
+      <img
+        src="https://neuromuscular.ie/wp-content/uploads/2023/10/LOGONeuromuscular-PNG.png"
+        alt="Neuromuscular & Sports Injury Clinic"
+        class="mx-auto"
+        style="max-height: 50px; width: auto; opacity: 0.7;"
+      />
+    </a>
+    <p class="text-xs mt-1 font-body" style="color: rgba(180,219,220,0.4);">High Performance Lab · Dublin · PB predictions powered by VDOT methodology (Jack Daniels &amp; Jimmy Gilbert)</p>
+  </footer>
+
+  <script>
+    // =========================================================================
+    // VDOT Calculator — Daniels/Gilbert Equations
+    // =========================================================================
+
+    const DISTANCES = [
+      { name: '5K',             meters: 5000,    label: '5K' },
+      { name: '10K',            meters: 10000,   label: '10K' },
+      { name: 'Half-Marathon',  meters: 21097.5, label: 'Half-Marathon' },
+      { name: 'Marathon',       meters: 42195,   label: 'Marathon' },
+    ];
+
+    function calcVO2(velocity) {
+      return -4.60 + 0.182258 * velocity + 0.000104 * velocity * velocity;
+    }
+
+    function calcIntensity(timeMinutes) {
+      return (
+        0.8 +
+        0.1894393 * Math.exp(-0.012778 * timeMinutes) +
+        0.2989558 * Math.exp(-0.1932605 * timeMinutes)
+      );
+    }
+
+    function calcVDOT(distanceMeters, timeMinutes) {
+      const velocity = distanceMeters / timeMinutes;
+      const vo2 = calcVO2(velocity);
+      const intensity = calcIntensity(timeMinutes);
+      return vo2 / intensity;
+    }
+
+    function predictTime(vdot, distanceMeters) {
+      let lo = 1;
+      let hi = 600;
+      for (let i = 0; i < 100; i++) {
+        const mid = (lo + hi) / 2;
+        const testVDOT = calcVDOT(distanceMeters, mid);
+        if (testVDOT > vdot) lo = mid; else hi = mid;
+        if (Math.abs(hi - lo) < 0.0001) break;
+      }
+      return (lo + hi) / 2;
+    }
+
+    function formatTime(totalMinutes) {
+      const totalSeconds = Math.round(totalMinutes * 60);
+      const hours = Math.floor(totalSeconds / 3600);
+      const mins  = Math.floor((totalSeconds % 3600) / 60);
+      const secs  = totalSeconds % 60;
+      const mm = String(mins).padStart(2, '0');
+      const ss = String(secs).padStart(2, '0');
+      if (hours > 0) return `${hours}:${mm}:${ss}`;
+      return `${mins}:${ss}`;
+    }
+
+    function formatPacePerKm(totalMinutes, distanceMeters) {
+      const distKm = distanceMeters / 1000;
+      const paceMin = totalMinutes / distKm;
+      const wholeMins = Math.floor(paceMin);
+      const remainSecs = Math.round((paceMin - wholeMins) * 60);
+      return `${wholeMins}:${String(remainSecs).padStart(2, '0')}`;
+    }
+
+    // =========================================================================
+    // DOM & Event Handlers
+    // =========================================================================
+
+    const distanceSelect  = document.getElementById('race-distance');
+    const hoursInput      = document.getElementById('hours');
+    const minutesInput    = document.getElementById('minutes');
+    const secondsInput    = document.getElementById('seconds');
+    const calculateBtn    = document.getElementById('calculate-btn');
+    const errorMessage    = document.getElementById('error-message');
+    const resultsSection  = document.getElementById('results-section');
+    const vdotScoreEl     = document.getElementById('vdot-score');
+    const predictionsBody = document.getElementById('predictions-body');
+
+    calculateBtn.addEventListener('click', handleCalculate);
+
+    [hoursInput, minutesInput, secondsInput].forEach(input => {
+      input.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter') handleCalculate();
+      });
+    });
+
+    function showError(msg) {
+      errorMessage.textContent = msg;
+      errorMessage.classList.remove('hidden');
+      errorMessage.classList.add('error-shake');
+      setTimeout(() => errorMessage.classList.remove('error-shake'), 400);
+    }
+
+    function hideError() {
+      errorMessage.classList.add('hidden');
+    }
+
+    function handleCalculate() {
+      hideError();
+
+      const distanceMeters = parseFloat(distanceSelect.value);
+      const hrs  = parseInt(hoursInput.value)   || 0;
+      const mins = parseInt(minutesInput.value)  || 0;
+      const secs = parseInt(secondsInput.value)  || 0;
+      const totalMinutes = hrs * 60 + mins + secs / 60;
+
+      if (totalMinutes <= 0) {
+        showError('Please enter a valid finish time greater than zero.');
+        return;
+      }
+
+      const minReasonable = { 5000: 10, 10000: 20, 21097.5: 50, 42195: 100 };
+      const maxReasonable = { 5000: 60, 10000: 120, 21097.5: 240, 42195: 480 };
+
+      if (totalMinutes < minReasonable[distanceMeters]) {
+        showError('That time seems too fast. Please check your entry.');
+        return;
+      }
+      if (totalMinutes > maxReasonable[distanceMeters]) {
+        showError('That time seems too slow for a VDOT calculation. Please check your entry.');
+        return;
+      }
+
+      const vdot = calcVDOT(distanceMeters, totalMinutes);
+
+      if (vdot < 10 || vdot > 90) {
+        showError('The calculated VDOT is outside a reasonable range. Please check your inputs.');
+        return;
+      }
+
+      vdotScoreEl.textContent = vdot.toFixed(1);
+
+      predictionsBody.innerHTML = '';
+      DISTANCES.forEach((dist) => {
+        const predicted = predictTime(vdot, dist.meters);
+        const pace = formatPacePerKm(predicted, dist.meters);
+        const isInput = dist.meters === distanceMeters;
+
+        const tr = document.createElement('tr');
+        tr.className = 'table-row border-t border-white/5';
+        tr.innerHTML = `
+          <td class="px-5 py-3.5 font-medium font-body" style="color: ${isInput ? '#B4DBDC' : '#e2e8f0'};">
+            ${dist.label}
+            ${isInput ? '<span class="ml-2 text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full font-semibold" style="background: rgba(0,139,149,0.15); color: #008B95;">Your Race</span>' : ''}
+          </td>
+          <td class="px-5 py-3.5 text-right font-mono font-semibold" style="color: ${isInput ? '#B4DBDC' : '#ffffff'};">${formatTime(predicted)}</td>
+          <td class="px-5 py-3.5 text-right font-mono" style="color: rgba(180,219,220,0.5);">${pace} /km</td>
+        `;
+        predictionsBody.appendChild(tr);
+      });
+
+      resultsSection.classList.remove('hidden');
+      resultsSection.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }
+  </script>
+</body>
+</html>
