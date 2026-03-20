@@ -36,7 +36,7 @@
   <style>
     body {
       font-family: 'Montserrat', Helvetica, Arial, sans-serif;
-      background: #06444A;
+      background: #f0f7f7;
       min-height: 100vh;
     }
 
@@ -46,26 +46,27 @@
 
     .bg-hero {
       background:
-        radial-gradient(ellipse 80% 50% at 50% 0%, rgba(0, 139, 149, 0.30) 0%, transparent 60%),
-        radial-gradient(ellipse 50% 40% at 80% 50%, rgba(10, 75, 94, 0.25) 0%, transparent 50%),
-        radial-gradient(ellipse 50% 50% at 20% 80%, rgba(22, 183, 204, 0.08) 0%, transparent 50%);
+        radial-gradient(ellipse 80% 50% at 50% 0%, rgba(180, 219, 220, 0.40) 0%, transparent 60%),
+        radial-gradient(ellipse 50% 40% at 80% 50%, rgba(0, 139, 149, 0.08) 0%, transparent 50%),
+        radial-gradient(ellipse 50% 50% at 20% 80%, rgba(180, 219, 220, 0.15) 0%, transparent 50%);
     }
 
     .card-glass {
-      background: rgba(255, 255, 255, 0.06);
-      border: 1px solid rgba(180, 219, 220, 0.12);
+      background: rgba(255, 255, 255, 0.70);
+      border: 1px solid rgba(0, 139, 149, 0.20);
       backdrop-filter: blur(24px);
+      box-shadow: 0 4px 24px rgba(6, 68, 74, 0.08);
     }
 
     .gradient-text {
-      background: linear-gradient(135deg, #B4DBDC, #008B95);
+      background: linear-gradient(135deg, #06444A, #008B95);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
     }
 
     .gradient-text-hero {
-      background: linear-gradient(135deg, #ffffff 0%, #B4DBDC 50%, #008B95 100%);
+      background: linear-gradient(135deg, #06444A 0%, #0A4B5E 40%, #008B95 100%);
       -webkit-background-clip: text;
       -webkit-text-fill-color: transparent;
       background-clip: text;
@@ -96,41 +97,41 @@
     }
 
     .input-field {
-      background: rgba(6, 68, 74, 0.8);
-      border: 1px solid rgba(180, 219, 220, 0.15);
+      background: #ffffff;
+      border: 1px solid rgba(0, 139, 149, 0.30);
       transition: all 0.25s ease;
-      color: #f1f5f9;
+      color: #06444A;
     }
     .input-field:focus {
-      border-color: rgba(0, 139, 149, 0.6);
+      border-color: #008B95;
       box-shadow: 0 0 0 3px rgba(0, 139, 149, 0.15);
-      background: rgba(10, 75, 94, 0.9);
+      background: #ffffff;
       outline: none;
     }
     .input-field::placeholder {
-      color: rgba(180, 219, 220, 0.6);
+      color: rgba(6, 68, 74, 0.40);
     }
 
     .select-field {
-      background-color: rgba(6, 68, 74, 0.8);
-      border: 1px solid rgba(180, 219, 220, 0.15);
+      background-color: #ffffff;
+      border: 1px solid rgba(0, 139, 149, 0.30);
       transition: all 0.25s ease;
       appearance: none;
-      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23B4DBDC' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
+      background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='16' height='16' viewBox='0 0 24 24' fill='none' stroke='%23008B95' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpolyline points='6 9 12 15 18 9'/%3E%3C/svg%3E");
       background-repeat: no-repeat;
       background-position: right 12px center;
       padding-right: 40px;
-      color: #f1f5f9;
+      color: #06444A;
     }
     .select-field:focus {
-      border-color: rgba(0, 139, 149, 0.6);
+      border-color: #008B95;
       box-shadow: 0 0 0 3px rgba(0, 139, 149, 0.15);
-      background-color: rgba(10, 75, 94, 0.9);
+      background-color: #ffffff;
       outline: none;
     }
     .select-field option {
-      background: #06444A;
-      color: #e2e8f0;
+      background: #ffffff;
+      color: #06444A;
     }
 
     .results-enter {
@@ -142,7 +143,7 @@
     }
 
     .vdot-badge {
-      background: linear-gradient(135deg, rgba(0, 139, 149, 0.15), rgba(10, 75, 94, 0.15));
+      background: linear-gradient(135deg, rgba(0, 139, 149, 0.08), rgba(180, 219, 220, 0.20));
       border: 1px solid rgba(0, 139, 149, 0.25);
     }
 
@@ -150,12 +151,12 @@
       transition: background 0.2s ease;
     }
     .table-row:hover {
-      background: rgba(255, 255, 255, 0.04);
+      background: rgba(0, 139, 149, 0.05);
     }
 
     .cta-card {
-      background: linear-gradient(135deg, rgba(101, 168, 122, 0.08), rgba(0, 139, 149, 0.06));
-      border: 1px solid rgba(101, 168, 122, 0.18);
+      background: linear-gradient(135deg, rgba(101, 168, 122, 0.08), rgba(0, 139, 149, 0.05));
+      border: 1px solid rgba(101, 168, 122, 0.25);
     }
 
     .pulse-dot {
@@ -177,11 +178,11 @@
 
     .divider-glow {
       height: 1px;
-      background: linear-gradient(90deg, transparent, rgba(0, 139, 149, 0.4), transparent);
+      background: linear-gradient(90deg, transparent, rgba(0, 139, 149, 0.35), transparent);
     }
 
     .logo-img {
-      filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.3));
+      filter: drop-shadow(0 2px 8px rgba(0, 0, 0, 0.10));
       transition: transform 0.3s ease;
     }
     .logo-img:hover {
@@ -189,7 +190,7 @@
     }
   </style>
 </head>
-<body class="bg-hero text-gray-200 antialiased">
+<body class="bg-hero antialiased">
 
   <!-- Header / Brand Bar -->
   <header class="pt-8 pb-2 text-center px-4">
@@ -206,7 +207,7 @@
     <div class="divider-glow max-w-xs mx-auto mb-7"></div>
 
     <!-- Sub-brand badge -->
-    <div class="inline-flex items-center gap-2 mb-4 px-4 py-1.5 rounded-full bg-brand-primary/10 border border-brand-primary/15 text-xs tracking-wide uppercase font-medium" style="color: #ffffff;">
+    <div class="inline-flex items-center gap-2 mb-4 px-4 py-1.5 rounded-full border text-xs tracking-wide uppercase font-medium" style="color: #06444A; background: rgba(0,139,149,0.08); border-color: rgba(0,139,149,0.20);">
       <span class="w-2 h-2 rounded-full pulse-dot inline-block" style="background: #008B95;"></span>
       High Performance Lab
     </div>
@@ -214,7 +215,7 @@
     <h1 class="font-heading text-4xl md:text-5xl lg:text-6xl font-black tracking-tight gradient-text-hero leading-tight pb-2">
       Personal Best Predictor
     </h1>
-    <p class="mt-3 font-body text-sm md:text-base max-w-xl mx-auto leading-relaxed" style="color: #ffffff;">
+    <p class="mt-3 font-body text-sm md:text-base max-w-xl mx-auto leading-relaxed" style="color: #0A4B5E;">
       Enter a recent race result to discover your VDOT fitness score and predicted race times across all distances.
     </p>
   </header>
@@ -224,14 +225,14 @@
 
     <!-- Input Card -->
     <section class="card-glass rounded-2xl p-6 md:p-8 mt-8" id="input-card">
-      <h2 class="font-heading text-lg font-bold text-white mb-6 flex items-center gap-2">
+      <h2 class="font-heading text-lg font-bold mb-6 flex items-center gap-2" style="color: #06444A;">
         <svg class="w-5 h-5" style="color: #008B95;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 10V3L4 14h7v7l9-11h-7z"/></svg>
         Enter Your Race Result
       </h2>
 
       <!-- Distance Selector -->
       <div class="mb-5">
-        <label for="race-distance" class="block text-sm font-medium mb-2" style="color: #ffffff;">Race Distance</label>
+        <label for="race-distance" class="block text-sm font-medium mb-2" style="color: #06444A;">Race Distance</label>
         <select id="race-distance" class="select-field w-full rounded-xl px-4 py-3 text-sm font-body">
           <option value="5000">5K</option>
           <option value="10000">10K</option>
@@ -242,25 +243,25 @@
 
       <!-- Time Inputs -->
       <div class="mb-6">
-        <label class="block text-sm font-medium mb-2" style="color: #ffffff;">Finish Time</label>
+        <label class="block text-sm font-medium mb-2" style="color: #06444A;">Finish Time</label>
         <div class="grid grid-cols-3 gap-3">
           <div>
             <input type="number" id="hours" min="0" max="12" placeholder="0" class="input-field w-full rounded-xl px-4 py-3 text-center text-lg font-semibold font-body" />
-            <span class="block text-center text-xs mt-1.5" style="color: #65a87a;">Hours</span>
+            <span class="block text-center text-xs mt-1.5" style="color: #008B95;">Hours</span>
           </div>
           <div>
             <input type="number" id="minutes" min="0" max="59" placeholder="00" class="input-field w-full rounded-xl px-4 py-3 text-center text-lg font-semibold font-body" />
-            <span class="block text-center text-xs mt-1.5" style="color: #65a87a;">Minutes</span>
+            <span class="block text-center text-xs mt-1.5" style="color: #008B95;">Minutes</span>
           </div>
           <div>
             <input type="number" id="seconds" min="0" max="59" placeholder="00" class="input-field w-full rounded-xl px-4 py-3 text-center text-lg font-semibold font-body" />
-            <span class="block text-center text-xs mt-1.5" style="color: #65a87a;">Seconds</span>
+            <span class="block text-center text-xs mt-1.5" style="color: #008B95;">Seconds</span>
           </div>
         </div>
       </div>
 
       <!-- Error Message -->
-      <div id="error-message" class="hidden mb-4 px-4 py-3 rounded-xl bg-red-500/10 border border-red-500/20 text-red-400 text-sm font-body"></div>
+      <div id="error-message" class="hidden mb-4 px-4 py-3 rounded-xl bg-red-500/10 border border-red-500/20 text-red-600 text-sm font-body"></div>
 
       <!-- Calculate Button -->
       <button id="calculate-btn" class="btn-primary w-full rounded-xl px-6 py-3.5 text-white font-bold text-sm tracking-wide cursor-pointer font-heading">
@@ -273,24 +274,24 @@
 
       <!-- VDOT Badge -->
       <div class="vdot-badge rounded-2xl p-6 md:p-8 text-center results-enter">
-        <p class="text-sm uppercase tracking-wider font-medium font-heading mb-1" style="color: #ffffff;">Your VDOT Score</p>
+        <p class="text-sm uppercase tracking-wider font-medium font-heading mb-1" style="color: #06444A;">Your VDOT Score</p>
         <p id="vdot-score" class="text-6xl md:text-7xl font-black font-heading gradient-text leading-none py-2"></p>
-        <p class="text-sm mt-2 font-body" style="color: #65a87a;">Based on your race performance</p>
+        <p class="text-sm mt-2 font-body" style="color: #008B95;">Based on your race performance</p>
       </div>
 
       <!-- Predicted Times Table -->
       <div class="card-glass rounded-2xl p-6 md:p-8 mt-4 results-enter" style="animation-delay: 0.1s;">
-        <h2 class="font-heading text-lg font-bold text-white mb-5 flex items-center gap-2">
-          <svg class="w-5 h-5" style="color: #65a87a;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
+        <h2 class="font-heading text-lg font-bold mb-5 flex items-center gap-2" style="color: #06444A;">
+          <svg class="w-5 h-5" style="color: #008B95;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg>
           Predicted Race Times
         </h2>
-        <div class="overflow-hidden rounded-xl border border-white/5">
+        <div class="overflow-hidden rounded-xl border" style="border-color: rgba(0,139,149,0.15);">
           <table class="w-full text-sm font-body">
             <thead>
               <tr style="background: rgba(0,139,149,0.08);">
-                <th class="text-left px-5 py-3 font-medium" style="color: #ffffff;">Distance</th>
-                <th class="text-right px-5 py-3 font-medium" style="color: #ffffff;">Predicted Time</th>
-                <th class="text-right px-5 py-3 font-medium" style="color: #ffffff;">Pace / km</th>
+                <th class="text-left px-5 py-3 font-medium" style="color: #06444A;">Distance</th>
+                <th class="text-right px-5 py-3 font-medium" style="color: #06444A;">Predicted Time</th>
+                <th class="text-right px-5 py-3 font-medium" style="color: #06444A;">Pace / km</th>
               </tr>
             </thead>
             <tbody id="predictions-body">
@@ -304,11 +305,11 @@
       <div class="cta-card rounded-2xl p-6 md:p-8 mt-4 results-enter" style="animation-delay: 0.2s;">
         <div class="flex items-start gap-4">
           <div class="flex-shrink-0 w-10 h-10 rounded-xl flex items-center justify-center mt-0.5" style="background: rgba(101,168,122,0.15);">
-            <svg class="w-5 h-5" style="color: #65a87a;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
+            <svg class="w-5 h-5" style="color: #008B95;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg>
           </div>
           <div>
-            <h3 class="font-heading text-white font-bold text-base mb-2">You've Got Untapped Potential</h3>
-            <p class="font-body text-sm leading-relaxed" style="color: #ffffff;">
+            <h3 class="font-heading font-bold text-base mb-2" style="color: #06444A;">You've Got Untapped Potential</h3>
+            <p class="font-body text-sm leading-relaxed" style="color: #0A4B5E;">
               Based on your current VDOT score, you have some serious untapped potential. Want to smash these predicted times? Book a physiological test and coaching consultation at our clinic to ensure you're training correctly and optimizing your race-day performance.
             </p>
           </div>
@@ -323,16 +324,16 @@
   </main>
 
   <!-- Footer -->
-  <footer class="text-center py-8 px-4" style="border-top: 1px solid rgba(0,139,149,0.15);">
+  <footer class="text-center py-8 px-4" style="border-top: 1px solid rgba(0,139,149,0.20);">
     <a href="https://neuromuscular.ie/" target="_blank" class="inline-block mb-3 hover:opacity-80 transition-opacity">
       <img
         src="https://neuromuscular.ie/wp-content/uploads/2023/10/LOGONeuromuscular-PNG.png"
         alt="Neuromuscular & Sports Injury Clinic"
         class="mx-auto"
-        style="max-height: 50px; width: auto; opacity: 0.7;"
+        style="max-height: 50px; width: auto;"
       />
     </a>
-    <p class="text-xs mt-1 font-body" style="color: #65a87a;">High Performance Lab · Dublin · PB predictions powered by VDOT methodology (Jack Daniels &amp; Jimmy Gilbert)</p>
+    <p class="text-xs mt-1 font-body" style="color: #008B95;">High Performance Lab · Dublin · PB predictions powered by VDOT methodology (Jack Daniels &amp; Jimmy Gilbert)</p>
   </footer>
 
   <script>
@@ -472,14 +473,15 @@
         const isInput = dist.meters === distanceMeters;
 
         const tr = document.createElement('tr');
-        tr.className = 'table-row border-t border-white/5';
+        tr.className = 'table-row border-t' ;
+        tr.style.borderColor = 'rgba(0,139,149,0.12)';
         tr.innerHTML = `
-          <td class="px-5 py-3.5 font-medium font-body" style="color: ${isInput ? '#B4DBDC' : '#e2e8f0'};">
+          <td class="px-5 py-3.5 font-medium font-body" style="color: ${isInput ? '#008B95' : '#06444A'};">
             ${dist.label}
-            ${isInput ? '<span class="ml-2 text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full font-semibold" style="background: rgba(0,139,149,0.15); color: #008B95;">Your Race</span>' : ''}
+            ${isInput ? '<span class="ml-2 text-[10px] uppercase tracking-wider px-2 py-0.5 rounded-full font-semibold" style="background: rgba(0,139,149,0.10); color: #008B95;">Your Race</span>' : ''}
           </td>
-          <td class="px-5 py-3.5 text-right font-mono font-semibold" style="color: ${isInput ? '#B4DBDC' : '#ffffff'};">${formatTime(predicted)}</td>
-          <td class="px-5 py-3.5 text-right font-mono" style="color: #65a87a;">${pace} /km</td>
+          <td class="px-5 py-3.5 text-right font-mono font-semibold" style="color: #06444A;">${formatTime(predicted)}</td>
+          <td class="px-5 py-3.5 text-right font-mono" style="color: #008B95;">${pace} /km</td>
         `;
         predictionsBody.appendChild(tr);
       });
